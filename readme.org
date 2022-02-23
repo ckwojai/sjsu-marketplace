@@ -1,0 +1,12 @@
+#+TITLE: Readme
+* Resources
+- [[https://javascript.plainenglish.io/getting-started-with-docker-and-apache-cassandra-eeb1fcd89988][Getting Started With Docker And Apache Cassandra]]
+    + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
+-
+* Setting up Minikube for local Kubenetes
+#+begin_src shell
+# install from brew, or choose your platform from https://minikube.sigs.k8s.io/docs/start
+brew install minikube
+minikube start
+minikube dashboard # UI to easy view activities
+#+end_src
