@@ -20,4 +20,5 @@ chmod 700 get_helm.sh
 #+begin_src shell
 helm install my-release bitnami/cassandra
 kubectl create namespace sjsump
+eval $(minikube -p minikube docker-env)
 #+end_src
