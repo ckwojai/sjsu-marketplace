@@ -2,7 +2,7 @@
 * Resources
 - [[https://javascript.plainenglish.io/getting-started-with-docker-and-apache-cassandra-eeb1fcd89988][Getting Started With Docker And Apache Cassandra]]
     + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
--
+- [[https://www.kyrelldixon.com/blog/setup-nextjs-with-tailwindcss-and-typescript][How to setup Next.js with Tailwind CSS and TypeScript]]
 * Setting up Minikube for local Kubenetes
 #+begin_src shell
 # install from brew, or choose your platform from https://minikube.sigs.k8s.io/docs/start
@@ -21,4 +21,5 @@ chmod 700 get_helm.sh
 helm install my-release bitnami/cassandra
 kubectl create namespace sjsump
 eval $(minikube -p minikube docker-env)
+minikube service sjsump-frontend-server -n sjsump
 #+end_src
