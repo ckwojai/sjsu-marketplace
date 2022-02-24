@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sjsump-frontend-deployment
+  namespace: sjsump
+  labels:
+    app: sjsump-frontend-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sjsump-frontend-server
+  template:
+    metadata:
+      labels:
+        app: sjsump-frontend-server
+    spec:
+      containers:
+      - name: sjsump-frontend-server
+        image: sjsump-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
