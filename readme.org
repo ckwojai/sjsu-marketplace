@@ -10,3 +10,13 @@ brew install minikube
 minikube start
 minikube dashboard # UI to easy view activities
 #+end_src
+* Installing Helm (package manager in Kubenetes)
+#+begin_src shell
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+#+end_src
+* Notes
+#+begin_src shell
+helm install my-release bitnami/cassandra
+#+end_src
