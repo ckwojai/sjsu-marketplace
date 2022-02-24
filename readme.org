@@ -19,4 +19,5 @@ chmod 700 get_helm.sh
 * Notes
 #+begin_src shell
 helm install my-release bitnami/cassandra
+kubectl create namespace sjsump
 #+end_src

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sjsump-api-deployment
+  namespace: sjsump
+  labels:
+    app: sjsump-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sjsump-api-server
+  template:
+    metadata:
+      labels:
+        app: sjsump-api-server
+    spec:
+      containers:
+      - name: sjsump-api-server
+        image: sjsump-api:latest
+        ports:
+        - containerPort: 80
