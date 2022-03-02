@@ -1,15 +1,15 @@
-FROM node:lts as dependencies
+FROM node:lts-slim as dependencies
 WORKDIR /my-project
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:lts as builder
+FROM node:lts-slim as builder
 WORKDIR /my-project
 COPY . .
 COPY --from=dependencies /my-project/node_modules ./node_modules
 RUN yarn build
 
-FROM node:lts as runner
+FROM node:lts-slim as runner
 WORKDIR /my-project
 ENV NODE_ENV production
 # If you are using a custom next.config.js file, uncomment this line.

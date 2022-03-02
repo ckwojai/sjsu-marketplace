@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 
 metadata:
-    name:   sjsump-api-server
-    namespace:  sjsump
+    name:   sjsump-api-svc
+    # namespace:  sjsump
 
 spec:
     selector:
-        app:   sjsump-api-server
+        app:   sjsump-api
     ports:
         -   port:   80
             name:   sjsump-api-port

@@ -1,8 +1,10 @@
 #+TITLE: Readme
 * Resources
 - [[https://javascript.plainenglish.io/getting-started-with-docker-and-apache-cassandra-eeb1fcd89988][Getting Started With Docker And Apache Cassandra]]
-    + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
+  + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
 - [[https://www.kyrelldixon.com/blog/setup-nextjs-with-tailwindcss-and-typescript][How to setup Next.js with Tailwind CSS and TypeScript]]
+- [[https://docs.datastax.com/en/developer/python-driver/3.25/api/][DataStax Python Driver 3.25]]
+- [[https://github.com/bitnami/charts/tree/master/bitnami/cassandra/#installing-the-chart][Cassandra Helm Chart]]
 * Setting up Minikube for local Kubenetes
 #+begin_src shell
 # install from brew, or choose your platform from https://minikube.sigs.k8s.io/docs/start
@@ -22,4 +24,5 @@ helm install my-release bitnami/cassandra
 kubectl create namespace sjsump
 eval $(minikube -p minikube docker-env)
 minikube service sjsump-frontend-server -n sjsump
+minikube start --cpus='6' —-nodes=2 --memory="11g" --kubernetes-version=v1.23.3 --driver=docker
 #+end_src

@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sjsump-api-deployment
-  namespace: sjsump
+  # namespace: sjsump
   labels:
-    app: sjsump-api-server
+    app: sjsump-api-svc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sjsump-api-server
+      app: sjsump-api
   template:
     metadata:
       labels:
-        app: sjsump-api-server
+        app: sjsump-api
     spec:
       containers:
-      - name: sjsump-api-server
+      - name: sjsump-api
         image: sjsump-api:latest
         imagePullPolicy: IfNotPresent
         ports:
