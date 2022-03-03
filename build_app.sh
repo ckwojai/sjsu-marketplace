@@ -52,10 +52,11 @@ fi
 echo "Docker test successful"
 
 echo "Starting minikube"
-# start_minikube
+start_minikube
 
 echo "Building images"
 eval $(minikube -p minikube docker-env)
-# build_images
+build_images
 
 echo "Deploying app"
+deploy_app
