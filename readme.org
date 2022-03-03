@@ -1,4 +1,6 @@
 #+TITLE: Readme
+* Getting Started
+Simply run ~./build_app.sh~ in root directory =]
 * Resources
 - [[https://javascript.plainenglish.io/getting-started-with-docker-and-apache-cassandra-eeb1fcd89988][Getting Started With Docker And Apache Cassandra]]
   + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
