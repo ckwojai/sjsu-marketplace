@@ -4,8 +4,7 @@
    + For Mac, use [[https://www.docker.com/products/docker-desktop][Docker Desktop]], or use ~brew install minikube~
    + For Linux, go to [[https://docs.docker.com/engine/install/ubuntu/][Install Docker Engine on Ubuntu]]
 2) Install Minikube
-   + [[   + https://minikube.sigs.k8s.io/docs/start/
-][Guide for both Mac and Linux]]
+   + [[https://minikube.sigs.k8s.io/docs/start/][Guide for both Mac and Linux]]
 3) Run ~./build_app.sh~ in root directory, it will start a minikube cluster, build all images, and deploy the app
 4) Run ~minikube dashboard~ to view dashboard, got to the pods tab and all pods should be green!
 5) Run ~minikube service sjsump-frontend-svc~ to view UI (next.js default page)
