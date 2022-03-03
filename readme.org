@@ -5,12 +5,13 @@
    + For Linux, go to [[https://docs.docker.com/engine/install/ubuntu/][Install Docker Engine on Ubuntu]]
 2) Install Minikube
    + [[https://minikube.sigs.k8s.io/docs/start/][Guide for both Mac and Linux]]
-3) Run ~./build_app.sh~ in root directory, it will start a minikube cluster, build all images, and deploy the app
-4) Run ~minikube dashboard~ to view dashboard, got to the pods tab and all pods should be green!
+3) Run ~./build_app.sh~ in root directory: it will start a minikube cluster, build all images, and deploy the app
+4) Run ~minikube dashboard~ to view dashboard, go to the pods tab and all pods should be green!
 5) Run ~minikube service sjsump-frontend-svc~ to view UI (next.js default page)
+6) Read the resources below and start developing :))
 * Resources
 - Frontend: [[https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website][next.js]]
-- Backend: [[https://fastapi.tiangolo.com/tutorial/][fastapi (python)]] or [[https://expressjs.com/en/5x/api.html][express.js (node)]]
+- Backend Server: [[https://fastapi.tiangolo.com/tutorial/][fastapi (python)]] or [[https://expressjs.com/en/5x/api.html][express.js (node)]]
 - [[https://docs.datastax.com/en/developer/python-driver/3.25/api/][DataStax Python Driver 3.25]]
 - [[https://javascript.plainenglish.io/getting-started-with-docker-and-apache-cassandra-eeb1fcd89988][Getting Started With Docker And Apache Cassandra]]
   + Run ~cqlsh~ inside the container bash to start the Cassandra CLI
