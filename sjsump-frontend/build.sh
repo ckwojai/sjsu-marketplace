@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t sjsump-frontend:latest app/
+docker build -t sjsump-frontend:latest .

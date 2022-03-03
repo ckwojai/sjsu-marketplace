@@ -1,11 +1,11 @@
 FROM node:lts-slim as dependencies
 WORKDIR /my-project
-COPY package.json yarn.lock ./
+COPY app/package.json app/yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 FROM node:lts-slim as builder
 WORKDIR /my-project
-COPY . .
+COPY app .
 COPY --from=dependencies /my-project/node_modules ./node_modules
 RUN yarn build
 
