@@ -23,7 +23,7 @@ chmod 700 get_helm.sh
 helm install my-release bitnami/cassandra
 kubectl create namespace sjsump
 eval $(minikube -p minikube docker-env)
-minikube service sjsump-frontend-server -n sjsump
+minikube service sjsump-frontend-svc
 minikube start --cpus='6' —-nodes=2 --memory="11g" --kubernetes-version=v1.23.3 --driver=docker
 kubectl logs -l app=sjsump-api -f
 #+end_src
