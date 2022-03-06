@@ -5,7 +5,7 @@
 1) Install Docker, use [[https://www.docker.com/products/docker-desktop][Docker Desktop]], launch and configure resouces CPU to at least 4 and Memory to at least 8GB
 2) Install Minikube, use ~brew install minikube~ or follow [[https://minikube.sigs.k8s.io/docs/start/][the official guide]]
 *** Linux
-1) Run ~./install_prereq_linu.sh~ in root directory to install Docker, Minikube, and Kubectl
+1) Run ~./install_prereq_linux.sh~ in root directory to install Docker, Minikube, and Kubectl
 ** Build and Deploy App
 1) Run ~./build_app.sh~ in root directory: it will start a minikube cluster, build all images, and deploy the app
 2) Run ~minikube dashboard~ to view dashboard, go to the pods tab and all pods should be green!
