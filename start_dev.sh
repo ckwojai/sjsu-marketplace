@@ -11,7 +11,7 @@
 
 minikube dashboard &
 # . config_hosts.sh
-minikube tunnel &
+sudo minikube tunnel
 
 # sleep 3
 # if [ ${OS} == "MacOS" ]; then

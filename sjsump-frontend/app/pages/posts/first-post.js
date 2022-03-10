@@ -6,7 +6,7 @@ import Layout from '../../components/layout'
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch('http://sjsump-api-svc')
+    const res = await fetch('http://sjsump-api-svc:3000')
     const data = await res.json()
     // Pass data to the page via props
     return { props: { data } }
