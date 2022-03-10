@@ -19,9 +19,7 @@ start_minikube() {
 build_images() {
     for i in "${build_folders[@]}"
     do
-        echo "building $i..."
         docker build -t $i:latest $i
-        echo "done building $i"
     done
     return 0
 }
@@ -29,9 +27,7 @@ build_images() {
 deploy_app() {
     for i in "${build_folders[@]}"
     do
-        echo "deploying $i..."
         kubectl apply -f $i
-        echo "done deploying $i"
     done
 }
 
@@ -57,6 +53,3 @@ start_minikube
 echo "Building images"
 eval $(minikube -p minikube docker-env)
 build_images
-
-echo "Deploying app"
-deploy_app
