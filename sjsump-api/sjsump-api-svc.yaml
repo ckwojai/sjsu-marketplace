@@ -6,9 +6,10 @@ metadata:
     # namespace:  sjsump
 
 spec:
+    type:   LoadBalancer
     selector:
         app:   sjsump-api
     ports:
-        -   port:   80
+        -   port:   3000
+            targetPort: 80
             name:   sjsump-api-port
-    type:   ClusterIP

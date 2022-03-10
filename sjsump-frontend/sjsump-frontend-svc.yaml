@@ -3,14 +3,12 @@ kind: Service
 
 metadata:
     name:   sjsump-frontend-svc
-    # namespace:  sjsump
 
 spec:
-    type: NodePort
+    type: LoadBalancer
     selector:
         app:   sjsump-frontend
     ports:
-        -   port: 3000
+        -   port: 80
             targetPort: 3000
-            nodePort: 30008
             name: sjsump-frontend-port
