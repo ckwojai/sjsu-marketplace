@@ -11,7 +11,8 @@ RUN yarn build
 
 FROM node:lts-slim as runner
 WORKDIR /my-project
-ENV NODE_ENV production
+# ENV NODE_ENV production
+ENV NODE_ENV development
 # If you are using a custom next.config.js file, uncomment this line.
 # COPY --from=builder /my-project/next.config.js ./
 COPY --from=builder /my-project/public ./public

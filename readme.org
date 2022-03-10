@@ -1,9 +1,25 @@
 #+TITLE: Readme
+
+* Responsibilities
+** Backend (focuses on serving data to frontend)
+- talk to frontend to establish API end points, data to expect
+- Mahesh
+** Backend (focuses on interacting with Cassandra)
+- talk to Cassandra database to query, modify, and delete data
+- Neel
+** Cassandra (data structure, table design)
+- design tables and data structure
+- Mehul
+** Frontend (User Interface)
+- Priyank / Kin
+** Frontend (API calls to backend)
+- Priyank / Kin
 * Getting Started (tested on M1 Mac and Ubuntu 20.04)
 ** Install Docker, Minikube, and Docker
 *** Mac
-1) Install Docker, use [[https://www.docker.com/products/docker-desktop][Docker Desktop]], launch and configure resouces CPU to at least 4 and Memory to at least 8GB
-2) Install Minikube, use ~brew install minikube~ or follow [[https://minikube.sigs.k8s.io/docs/start/][the official guide]]
+1) Install development packages on Mac using ~xcode-select --install~
+2) Install Docker, use [[https://www.docker.com/products/docker-desktop][Docker Desktop]], launch and configure resouces CPU to at least 4 and Memory to at least 8GB
+3) Install Minikube, use ~brew install minikube~ or follow [[https://minikube.sigs.k8s.io/docs/start/][the official guide]]
 *** Linux
 1) Run ~./install_prereq_linux.sh~ in root directory to install Docker, Minikube, and Kubectl
 ** Build and Deploy App
