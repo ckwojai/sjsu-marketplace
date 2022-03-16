@@ -1,19 +1,13 @@
 #+TITLE: Readme
 
 * Responsibilities
-** Backend (focuses on serving data to frontend)
-- talk to frontend to establish API end points, data to expect
-- Mahesh
-** Backend (focuses on interacting with Cassandra)
-- talk to Cassandra database to query, modify, and delete data
-- Neel
-** Cassandra (data structure, table design)
-- design tables and data structure
-- Mehul
-** Frontend (User Interface)
-- Priyank / Kin
-** Frontend (API calls to backend)
-- Priyank / Kin
+| Member  | Focus                       |
+|---------+-----------------------------|
+| Kin     | Frontend UI and Kubernetes  |
+| Mehul   | Database Table Design       |
+| Priyank | Frontend UI                 |
+| Mahesh  | Backend API, serving data   |
+| Neel    | Backend, query data from DB |
 * Getting Started (tested on M1 Mac and Ubuntu 20.04)
 ** Install Docker, Minikube, and Docker
 *** Mac
@@ -23,10 +17,9 @@
 *** Linux
 1) Run ~./install_prereq_linux.sh~ in root directory to install Docker, Minikube, and Kubectl
 ** Build and Deploy App
-1) Run ~./build_app.sh~ in root directory: it will start a minikube cluster, build all images, and deploy the app
-2) Run ~minikube dashboard~ to view dashboard, go to the pods tab and all pods should be green!
-3) Run ~minikube service sjsump-frontend-svc~ to view UI (next.js default page)
-4) Read the resources below and start developing :))
+1) Run ~./build_app.sh~ in root directory: it will start a minikube cluster and build all images within
+2) Run ~./deploy_app.sh~ in root directory: it will deploy app inside k8s cluster
+3) Run ~./start_dev.sh~ in root directory to spin up dashboard and tunnel to start developing!
 * Resources
 - Frontend: [[https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website][next.js]]
 - Backend Server: [[https://fastapi.tiangolo.com/tutorial/][fastapi (python)]] or [[https://expressjs.com/en/5x/api.html][express.js (node)]]
