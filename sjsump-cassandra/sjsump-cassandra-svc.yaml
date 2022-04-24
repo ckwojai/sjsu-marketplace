@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: sjsump-cassandra-svc
   labels:
     app: sjsump-cassandra-svc
-  name: sjsump-cassandra-svc
 spec:
-  clusterIP: None
-  ports:
-  - port: 9042
-  selector:
-    app: sjsump-cassandra
+    type:   LoadBalancer
+    selector:
+        app:   sjsump-cassandra
+    ports:
+        -   port: 9042
+            targetPort: 9042
+            name: sjsump-cassandra-port
