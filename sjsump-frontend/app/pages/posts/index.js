@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Container from '../../components/container'
 import Post from "../../components/post"
-import distanceToNow from '../../lib/dateRelative'
 import { getAllPosts } from '../../lib/api-client'
 
 export default function PostsPage({allPosts}) {
