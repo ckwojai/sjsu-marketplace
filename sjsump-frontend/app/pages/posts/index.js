@@ -1,24 +1,16 @@
 import Link from 'next/link'
 import Container from '../../components/container'
+import Post from "../../components/post"
 import distanceToNow from '../../lib/dateRelative'
 import { getAllPosts } from '../../lib/api-client'
-import { useEffect } from 'react'
 
-export default function NotePage({allPosts}) {
+export default function PostsPage({allPosts}) {
   return (
     <Container>
       {allPosts.length ? (
-        allPosts.map((post) => (
-          <article key={post.title} className="mb-10">
-            <Link as={`/posts/${post.title}`} href="/posts/[slug]">
-              <a className="text-lg leading-6 font-bold">{post.title}</a>
-            </Link>
-            <p>{post.description}</p>
-            {/* <div className="text-gray-400">
-              <time>{distanceToNow(new Date(post.date))}</time>
-            </div> */}
-          </article>
-        ))
+        allPosts.map((post) => {
+          return <Post {...post} />
+        })
       ) : (
         <p>No blog posted yet :/</p>
       )}
