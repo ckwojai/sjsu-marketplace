@@ -3,16 +3,19 @@ from fastapi import FastAPI
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-import uvicorn
 from fastapi import FastAPI, Form
 from pydantic import BaseModel
 from typing import Optional
 from fastapi import FastAPI, File, UploadFile
 from cassandra.cluster import Cluster
-
-
+from cassandra import ConsistencyLevel
+from cassandra.cluster import Cluster
+from cassandra.query import SimpleStatement
 
 import logging
+import uvicorn
+import uuid
+
 
 log = logging.getLogger()
 log.setLevel('DEBUG')
@@ -20,9 +23,6 @@ handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s"))
 log.addHandler(handler)
 
-from cassandra import ConsistencyLevel
-from cassandra.cluster import Cluster
-from cassandra.query import SimpleStatement
 
 
 def testCassandra():
@@ -132,16 +132,11 @@ async def post_product_ad(post_id : str = Form(...),
     session=connect_to_db()
 
 
-    stmt=session.prepare("""INSERT INTO post_details 
-(Post_id,Post_image, Post_title, Post_price,Post_description) 
-VALUES(?,?,?,?,?)""")
+    stmt=session.prepare("""INSERT INTO posts
+     (Post_id,Post_image, Post_title, Post_price,Post_description) VALUES(?,?,?,?,?)""")
 
 
-    post_id=int(post_id)
+    post_id = uuid.UUID(post_id)
     post_price=int(post_price)
-
-
-
-
     results=session.execute(stmt,[post_id,content_assignment,post_title,post_price,post_desc])
     return {"success":"inserted"}#{"owner_name":owner_name,"email_id":email_id,"product_name":product_name,"input_address" :input_address,"product_description":product_description}
