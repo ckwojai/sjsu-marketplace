@@ -1,5 +1,16 @@
 from typing import Optional
 from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+import uvicorn
+from fastapi import FastAPI, Form
+from pydantic import BaseModel
+from typing import Optional
+from fastapi import FastAPI, File, UploadFile
+from cassandra.cluster import Cluster
+
+
 
 import logging
 
@@ -18,6 +29,7 @@ def testCassandra():
     KEYSPACE = "testkeyspace"
     cluster = Cluster(['sjsump-cassandra-svc'], protocol_version=5)
     session = cluster.connect()
+    print("[INFO] In testCassandra-connected to cluster")
 
     rows = session.execute("SELECT keyspace_name FROM system_schema.keyspaces")
     if KEYSPACE in [row[0] for row in rows]:
@@ -84,3 +96,52 @@ def read_root():
 def read_root():
     rows = testCassandra()
     return rows.all()
+
+class Product_Ad(BaseModel):
+    post_id: str
+    post_price: str
+    post_title :Optional[str] =None
+    post_desc : Optional[str] = None
+    post_image: UploadFile
+
+
+def connect_to_db():
+    #cluster=Cluster(['127.0.0.1'],port=9042)
+    cluster=Cluster(['sjsump-cassandra-svc'], protocol_version=5)
+    session=cluster.connect()
+    session.set_keyspace("sjsu")
+    session.execute("use sjsu;")
+    return session
+
+
+@app.post("/post_product_ad")
+async def post_product_ad(post_id : str = Form(...),
+    post_price  : str = Form(...),
+    post_title  : str = Form(...),
+    post_desc : str = Form(...),
+    post_image: UploadFile = File(...)):
+
+    ## Printing data
+    print(post_id)
+    print(post_price)
+    print(post_title)
+    print(post_desc)
+    content_assignment=await post_image.read()
+    print("[INFO]Image received")
+
+    session=connect_to_db()
+
+
+    stmt=session.prepare("""INSERT INTO post_details 
+(Post_id,Post_image, Post_title, Post_price,Post_description) 
+VALUES(?,?,?,?,?)""")
+
+
+    post_id=int(post_id)
+    post_price=int(post_price)
+
+
+
+
+    results=session.execute(stmt,[post_id,content_assignment,post_title,post_price,post_desc])
+    return {"success":"inserted"}#{"owner_name":owner_name,"email_id":email_id,"product_name":product_name,"input_address" :input_address,"product_description":product_description}
