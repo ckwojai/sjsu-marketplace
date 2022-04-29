@@ -1,14 +1,11 @@
-
-cqlsh;
-
 CREATE KEYSPACE SJSU WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3}; 
 
-Use sjsu;
+Use SJSU;
 
 Describe tables;
 
 CREATE TABLE Post_details(
-Post_id int PRIMARY KEY,
+Post_id uuid PRIMARY KEY,
 Post_title text,
 Post_price varint,
 Post_description text,

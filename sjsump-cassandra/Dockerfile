@@ -175,6 +175,7 @@ RUN  echo " - /cassandra_data" >> /etc/cassandra/cassandra.yaml
 RUN  echo "request_timeout_in_ms: 60000" >> /etc/cassandra/cassandra.yaml
 
 COPY docker-entrypoint.sh /usr/local/bin/
+COPY pre_sql.sql /
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # 7000: intra-node communication
