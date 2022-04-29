@@ -4,11 +4,13 @@ import Container from '../components/container'
 function Header() {
   return (
     <header className="py-6">
-      <a className="text-xl">SJSU Marketplace</a>
+      <Link href="/posts">
+        <a className="text-3xl font-bold text-blue-700">SJSU Marketplace</a>
+      </Link>
       <Container>
-        <nav className="flex space-x-8 text-lg">
-          <Link href="/posts">
-            <a>Posts</a>
+        <nav className="flex space-x-8 text-xl text-teal-500">
+          <Link href="/posts/new">
+            <a className="text-indigo-500">New Post</a>
           </Link>
         </nav>
       </Container>

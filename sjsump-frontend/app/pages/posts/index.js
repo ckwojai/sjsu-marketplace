@@ -18,11 +18,7 @@ export default function PostsPage({allPosts}) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://127.0.0.1:3000/api/post`);
-  console.log(res)
-  const allPosts = await res.json();
-  console.log(allPosts)
-
+  const allPosts = await getAllPosts();
   return {
     props: { allPosts },
   }

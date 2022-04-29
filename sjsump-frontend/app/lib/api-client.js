@@ -1,5 +1,5 @@
 // const endpoint = process.env.REACT_APP_SERVICE_URI ? process.env.REACT_APP_SERVICE_URI : 'https://localhost:3000/'
-const host = "http://localhost:3000/"
+const host = "http://127.0.0.1:3001/"
 
 async function getAllPosts() {
     const route = "api/post"
@@ -15,11 +15,8 @@ async function createNewPost(postData) {
     const res = await fetch(
     host+route,
     {
-        body: JSON.stringify(postData),
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        method: 'POST'
+        method: 'POST',
+        body: postData
     }
     )
     return await res.json()
