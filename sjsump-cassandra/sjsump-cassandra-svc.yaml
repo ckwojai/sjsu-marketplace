@@ -4,11 +4,17 @@ metadata:
   name: sjsump-cassandra-svc
   labels:
     app: sjsump-cassandra-svc
+# spec:
+#     type:   LoadBalancer
+#     selector:
+#         app:   sjsump-cassandra
+#     ports:
+#         -   port: 9042
+#             targetPort: 9042
+#             name: sjsump-cassandra-port
 spec:
-    type:   LoadBalancer
-    selector:
-        app:   sjsump-cassandra
-    ports:
-        -   port: 9042
-            targetPort: 9042
-            name: sjsump-cassandra-port
+  clusterIP: None
+  ports:
+  - port: 9042
+  selector:
+    app: sjsump-cassandra
