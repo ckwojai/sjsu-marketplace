@@ -1,20 +1,14 @@
 from typing import Optional
-from fastapi import FastAPI
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, File, UploadFile, Form
 from pydantic import BaseModel
-from typing import Optional
-from fastapi import FastAPI, File, UploadFile
+
 from cassandra.cluster import Cluster
 from cassandra import ConsistencyLevel
-from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 
 import logging
-import uvicorn
 import uuid
+import base64
 
 
 log = logging.getLogger()
@@ -22,7 +16,6 @@ log.setLevel('DEBUG')
 handler = logging.StreamHandler()
 handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s"))
 log.addHandler(handler)
-
 
 
 def testCassandra():
@@ -110,33 +103,45 @@ def connect_to_db():
     cluster=Cluster(['sjsump-cassandra-svc'], protocol_version=5)
     session=cluster.connect()
     session.set_keyspace("sjsu")
-    session.execute("use sjsu;")
+    session.execute("USE sjsu;")
     return session
 
+@app.get("/api/post/all")
+async def get_all_posts():
+    query = "SELECT Post_id, Post_title, Post_price, Post_description, Post_image FROM Post_details"
+    session = connect_to_db()
+    posts = []
+    # FIXME: store MIME type in database instead of hard coding it here
+    MIME_type = "image/jpeg"
+    image_header = f"data:{MIME_type};base64," 
+    for (pid, title, price, description, image) in session.execute(query):
+        item = {
+            "pid": pid,
+            "title": title,
+            "price": price,
+            "description": description,
+            "image": image_header + base64.b64encode(image).decode('utf-8')
+        }
+        posts.append(item)
+    return posts
 
-@app.post("/post_product_ad")
-async def post_product_ad(post_id : str = Form(...),
+
+@app.post("/api/post")
+async def create_post(
+    post_id : str = Form(...),
     post_price  : str = Form(...),
     post_title  : str = Form(...),
     post_desc : str = Form(...),
-    post_image: UploadFile = File(...)):
+    post_image: UploadFile = File(...)
+    ):
 
-    ## Printing data
-    print(post_id)
-    print(post_price)
-    print(post_title)
-    print(post_desc)
     content_assignment=await post_image.read()
-    print("[INFO]Image received")
-
     session=connect_to_db()
 
-
-    stmt=session.prepare("""INSERT INTO posts
+    stmt=session.prepare("""INSERT INTO Post_details
      (Post_id,Post_image, Post_title, Post_price,Post_description) VALUES(?,?,?,?,?)""")
-
-
     post_id = uuid.UUID(post_id)
     post_price=int(post_price)
-    results=session.execute(stmt,[post_id,content_assignment,post_title,post_price,post_desc])
-    return {"success":"inserted"}#{"owner_name":owner_name,"email_id":email_id,"product_name":product_name,"input_address" :input_address,"product_description":product_description}
+    result=session.execute(stmt,[post_id,content_assignment,post_title,post_price,post_desc])
+
+    return {"success":"inserted"}
