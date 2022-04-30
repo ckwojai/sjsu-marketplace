@@ -15,7 +15,7 @@ function Form() {
     const [formState, setFormState] = useState({
         title: "Please Enter Your Title",
         price: 0,
-        description: "Please Enter Your Descriptioin",
+        desc: "Please Enter Your Description",
         image: null
     });
 
@@ -49,7 +49,7 @@ function Form() {
                         <label className="block uppercase tracking-wide text-white text-base mb-2 font-bold">
                             Description
                         </label>
-                        <textarea className="appearance-none block w-full bg-transparent border border-green-300 text-white rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-500 focus:border-gray-500" id="grid-password" type="text" rows="10" placeholder="Description" name="description" onChange={handleChange} />
+                        <textarea className="appearance-none block w-full bg-transparent border border-green-300 text-white rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-500 focus:border-gray-500" id="grid-password" type="text" rows="10" placeholder="Description" name="desc" onChange={handleChange} />
                         <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
                     </div>
                 </div>
