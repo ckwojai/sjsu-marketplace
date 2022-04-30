@@ -17,9 +17,8 @@ export default function PostsPage({allPosts}) {
         allPosts.map((post) => {
           return <Post {...post} />
         })
-      ) : (
-        <p>No blog posted yet :/</p>
-      )}
+      ) : null
+      }
     </Container>
   )
 }

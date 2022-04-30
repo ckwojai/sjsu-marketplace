@@ -4,18 +4,18 @@ import { useState } from "react"
 import { useRouter } from "next/router"
 function Form() {
     const router = useRouter()
-    const handleSubmit = async event => {
-        event.preventDefault()
-        const res_data = await createNewPost(formState)
-        router.push("/posts")
-    }
-
     const [formState, setFormState] = useState({
         title: "Please Enter Your Title",
         price: 0,
         desc: "Please Enter Your Description",
         image: null
     });
+
+    const handleSubmit = async event => {
+        event.preventDefault()
+        createNewPost(formState)
+        setTimeout(router.push("/posts"), 2000)
+    }
 
     function handleChange(e) {
         if (e.target.files) {
@@ -38,7 +38,7 @@ function Form() {
                         <label className="block uppercase tracking-wide text-white text-base mb-2 font-bold">
                             Price
                         </label>
-                        <input className="appearance-none block w-full bg-transparent border border-green-300 text-white rounded py-3 px-4 leading-tight focus:bg-gray-500 focus:border-gray-500" id="grid-last-name" type="number" placeholder="0" name="price" onChange={handleChange}/>
+                        <input className="appearance-none block w-full bg-transparent border border-green-300 text-white rounded py-3 px-4 leading-tight focus:bg-gray-500 focus:border-gray-500" id="grid-last-name" type="number" placeholder="0" name="price" onChange={handleChange} />
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -53,7 +53,7 @@ function Form() {
                 <div className="flex flex-wrap -mx-3 mb-2">
                     <div className="w-full md:w-2/3 px-3 mb-6 md:mb-0">
                         <div className="w-full md:w-4/5 px-3 mb-6 md:mb-0">
-                            <input className="appearance-none block w-full text-white border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="file" name="image" onChange={handleChange}/>
+                            <input className="appearance-none block w-full text-white border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="file" name="image" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="w-full md:w-1/3 px-3 flex flex-row-reverse">
