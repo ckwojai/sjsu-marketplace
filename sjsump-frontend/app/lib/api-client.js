@@ -2,6 +2,7 @@
 // const host = "http://127.0.0.1:3001/"
 const internal_host = "http://sjsump-api-svc:3000/"
 const external_host = "http://127.0.0.1:3000/"
+// const internal_host = external_host
 
 function uuidv4() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
