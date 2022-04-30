@@ -6,23 +6,25 @@ import { getAllPosts } from '../../lib/api-client'
 export default function PostsPage({allPosts}) {
   return (
     <Container>
+      <div className="flex flex-row-reverse">
+        <Link href="/posts/new">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            Create New Post
+          </button>
+        </Link>
+      </div>
       {allPosts.length ? (
         allPosts.map((post) => {
           return <Post {...post} />
         })
-      ) : (
-        <p>No blog posted yet :/</p>
-      )}
+      ) : null
+      }
     </Container>
   )
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://127.0.0.1:3000/api/post`);
-  console.log(res)
-  const allPosts = await res.json();
-  console.log(allPosts)
-
+  const allPosts = await getAllPosts();
   return {
     props: { allPosts },
   }

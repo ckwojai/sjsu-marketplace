@@ -5,7 +5,7 @@ module.exports = {
       return [
         {
           source: '/',
-          destination: '/posts',
+          destination: '/logreg',
           permanent: true,
         },
       ]
