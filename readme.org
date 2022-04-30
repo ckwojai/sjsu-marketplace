@@ -17,7 +17,8 @@
 ** Build and Deploy App
 1) Run ~./build_app.sh~ in root directory: it will start a minikube cluster and build all images within
 2) Run ~./deploy_app.sh~ in root directory: it will deploy app inside k8s cluster
-3) Run ~./start_dev.sh~ in root directory to spin up dashboard and tunnel to start developing!
+3) Wait for a few minutes for Cassandra to start up, then run ~./init_db.sh~ to create keyspace and tables.
+4) Run ~./start_dev.sh~ in root directory to spin up dashboard and tunnel to start developing!
 * Resources
 - Frontend: [[https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website][next.js]]
 - Backend Server: [[https://fastapi.tiangolo.com/tutorial/][fastapi (python)]] or [[https://expressjs.com/en/5x/api.html][express.js (node)]]
