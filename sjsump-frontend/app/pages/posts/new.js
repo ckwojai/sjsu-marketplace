@@ -1,5 +1,5 @@
 import Container from '../../components/container'
-import { getAllPosts } from "../../lib/api-client"
+import { createNewPost } from "../../lib/api-client"
 import { useState } from "react"
 import { useRouter } from "next/router"
 function Form() {
