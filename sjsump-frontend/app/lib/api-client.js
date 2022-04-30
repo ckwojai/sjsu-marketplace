@@ -14,9 +14,9 @@ async function getAllPosts() {
     const route = "api/post/all"
     return fetch(internal_host + route).then(res => res.json()).then(
         (resData) => {
-            return resData;
+            return resData
         }
-        )
+    )
 }
 
 async function createNewPost(postData) {
@@ -26,17 +26,15 @@ async function createNewPost(postData) {
         formData.append(`post_${key}`, object[key]);
         return formData;
     }, new FormData());
+
     const formData = getFormData(postData)
-    console.log(formData)
-    const res = await fetch(
-    external_host+route,
-    {
-        method: 'POST',
-        mode: 'no-cors', // FIXME: no-cors since we calling 
-        body: formData
-    }
-    )
-    return await res.json()
+    const res = await fetch( external_host + route,
+        {
+            method: 'POST',
+            mode: 'no-cors', // FIXME:
+            body: formData
+        })
+    return
 }
 
-export {getAllPosts, createNewPost}
+export { getAllPosts, createNewPost }

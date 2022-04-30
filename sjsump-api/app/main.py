@@ -144,4 +144,4 @@ async def create_post(
     post_price=int(post_price)
     result=session.execute(stmt,[post_id,content_assignment,post_title,post_price,post_desc])
 
-    return {"success":"inserted"}
+    return
