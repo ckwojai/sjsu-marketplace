@@ -1,15 +1,13 @@
 import Container from '../../components/container'
-import { createNewPost } from "../../lib/api-client"
+import { getAllPosts } from "../../lib/api-client"
 import { useState } from "react"
+import { useRouter } from "next/router"
 function Form() {
+    const router = useRouter()
     const handleSubmit = async event => {
         event.preventDefault()
-        console.log(formState)
-        console.log(JSON.stringify(formState))
         const res_data = await createNewPost(formState)
-
-        console.log(res_data)
-        // result.user => 'Ada Lovelace'
+        router.push("/posts")
     }
 
     const [formState, setFormState] = useState({
@@ -25,7 +23,6 @@ function Form() {
         } else {
             setFormState({ ...formState, [e.target.name]: e.target.value });
         }
-        console.log(formState)
     }
     return (
         <Container>
